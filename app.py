@@ -25,7 +25,7 @@ dataset['Text'] = dataset['Text'].apply(preprocess_text)
 
 # Split dataset into X and y
 x_data = dataset['Text']
-y_data = dataset['CategoryId']
+y_data = dataset['Category']
 
 # Vectorize text data
 cv = CountVectorizer(max_features=5000)
