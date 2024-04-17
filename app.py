@@ -4,6 +4,7 @@ import numpy as np
 import re
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
 
 # Function to preprocess text
 def preprocess_text(text):
@@ -14,6 +15,24 @@ def preprocess_text(text):
     # Remove extra whitespaces
     text = re.sub(r'\s+', ' ', text)
     return text
+
+# Load dataset
+dataset_path = "https://gist.githubusercontent.com/ArbilShofiyurrahman/6d5902192d1134bd178b0434b43a7204/raw/8a166bb36b3fd8fb578a1ae3188ccd4133b92258/BBC%2520News%2520Train.csv"
+dataset = pd.read_csv(dataset_path)
+
+# Preprocess dataset
+dataset['Text'] = dataset['Text'].apply(preprocess_text)
+
+# Split dataset into X and y
+x_data = dataset['Text']
+y_data = dataset['CategoryId']
+
+# Vectorize text data
+cv = CountVectorizer(max_features=5000)
+x_data_vectorized = cv.fit_transform(x_data).toarray()
+
+# Train-test split
+x_train, x_test, y_train, y_test = train_test_split(x_data_vectorized, y_data, test_size=0.3, random_state=0, shuffle=True)
 
 # Load trained model
 classifier = RandomForestClassifier(n_estimators=100, criterion='entropy', random_state=0)
