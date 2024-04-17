@@ -17,7 +17,7 @@ def preprocess_text(text):
     return text
 
 # Load dataset
-dataset_path = "https://gist.githubusercontent.com/ArbilShofiyurrahman/6d5902192d1134bd178b0434b43a7204/raw/8a166bb36b3fd8fb578a1ae3188ccd4133b92258/BBC%2520News%2520Train.csv"
+dataset_path = "https://gist.githubusercontent.com/ArbilShofiyurrahman/44ba802820f22b10103ce3fb08b0bf7a/raw/ab90c71f3ddbaa464ef116be55089d0fc859fce6/BBC%2520News%2520Train.csv"
 dataset = pd.read_csv(dataset_path)
 
 # Preprocess dataset
@@ -25,7 +25,7 @@ dataset['Text'] = dataset['Text'].apply(preprocess_text)
 
 # Split dataset into X and y
 x_data = dataset['Text']
-y_data = dataset['Category']
+y_data = dataset['CategoryId']
 
 # Vectorize text data
 cv = CountVectorizer(max_features=5000)
