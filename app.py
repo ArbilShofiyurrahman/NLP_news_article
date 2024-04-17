@@ -17,7 +17,7 @@ nltk.download('wordnet')
 # Load dataset
 @st.cache
 def load_data():
-    dataset = pd.read_csv("")https://gist.githubusercontent.com/ArbilShofiyurrahman/6d5902192d1134bd178b0434b43a7204/raw/8a166bb36b3fd8fb578a1ae3188ccd4133b92258/BBC%2520News%2520Train.csv
+    dataset = pd.read_csv("https://gist.githubusercontent.com/ArbilShofiyurrahman/6d5902192d1134bd178b0434b43a7204/raw/8a166bb36b3fd8fb578a1ae3188ccd4133b92258/BBC%2520News%2520Train.csv")
     return dataset
 
 # Preprocessing functions
